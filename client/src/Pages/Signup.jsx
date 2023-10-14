@@ -14,8 +14,14 @@ const Signup = () => {
   return (
     <Box className="container" sx={{ height: "100vh" }}>
       <Grid container spacing={2}>
-        <Grid xs={6} md={7}></Grid>
-        <Grid xs={6} md={5}>
+        <Grid xs={12} md={7}>
+          <div className="slogan">
+            <h1 className="start">Start</h1>
+            <h1 className="tomorrow">Tomorrow</h1>
+            <h1 className="today">Today</h1>
+          </div>
+        </Grid>
+        <Grid xs={12} md={5}>
           <SigninForm />
         </Grid>
       </Grid>

@@ -1,0 +1,30 @@
+.slogan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.slogan .start {
+  color: #630f90;
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.slogan .tomorrow {
+  color: #dbdbdb;
+  margin-left: 25%;
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.slogan .today {
+  color: #630f90;
+  margin-left: 50%;
+  font-size: 5rem;
+  font-weight: 600;
+}

@@ -3,15 +3,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #000000; /* Adjust the background color as needed */
+  min-height: 100vh;
+  background-color: #111111;
+  border-left: inset white -10px; /* Adjust the background color as needed */
 }
 
 form {
   width: 80%; /* Adjust the width as needed */
   max-width: 400px; /* Optional: Set a maximum width for the form */
   padding: 20px;
-  background-color: #000000;
+  background-color: #111;
 }
 
 label {
@@ -27,8 +28,8 @@ input[type="password"] {
   margin: 8px 0;
   display: inline-block;
   box-sizing: border-box;
-  background-color: rgb(35, 32, 32);
-  border: solid 1px rgb(35, 32, 32);
+  background-color: #1f1f1f;
+  border: inset -1px rgb(35, 32, 32);
   outline: none;
   color: #ffffff;
   font-size: 20px;
@@ -100,4 +101,26 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.custom-shape-divider-bottom-1697250597 {
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1697250597 svg {
+  position: relative;
+  display: block;
+  width: calc(127% + 1.3px);
+  height: 317px;
+}
+
+.custom-shape-divider-bottom-1697250597 .shape-fill {
+  fill: #630f90;
 }
