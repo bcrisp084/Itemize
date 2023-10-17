@@ -1,6 +1,8 @@
 import "./SigninForm.css";
 
-const SigninForm = () => {
+import PropTypes from "prop-types";
+
+const SigninForm = ({ handleNavigate }) => {
   return (
     <>
       <div className="custom-shape-divider-bottom-1697250597">
@@ -54,13 +56,22 @@ const SigninForm = () => {
         </form>
         <p className="login">
           Already have an account?
-          <a rel="noopener noreferrer" href="#" className="login-link">
+          <a
+            onClick={handleNavigate}
+            rel="noopener noreferrer"
+            href="#"
+            className="login-link"
+          >
             Login
           </a>
         </p>
       </div>
     </>
   );
+};
+
+SigninForm.propTypes = {
+  handleNavigate: PropTypes.func.isRequired,
 };
 
 export default SigninForm;
