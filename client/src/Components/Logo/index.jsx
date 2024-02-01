@@ -1,11 +1,11 @@
 export default function Logo() {
   return (
     <svg
-      style={{ color: "white", marginRight: "10px" }}
+      style={{ color: "white", marginRight: "3px" }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width="32"
-      height="30"
+      height="28"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
