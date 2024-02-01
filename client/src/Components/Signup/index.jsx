@@ -18,18 +18,48 @@ export default function Signup({ isOpen, onOpenChange }) {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
-    birthDate: "",
     email: "",
     password: "",
+  });
+
+  const [isValid, setIsValid] = useState({
+    firstName: true,
+    lastName: true,
+    email: true,
+    password: true,
   });
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const isInvalid = () => {
+    const newValidUser = {
+      firstName: user.firstName.trim() !== "",
+      lastName: user.lastName.trim() !== "",
+      email: user.email.trim() !== "",
+      password: user.password.trim() !== "",
+    };
+
+    setIsValid(newValidUser);
+
+    return (
+      !newValidUser.firstName ||
+      !newValidUser.lastName ||
+      !newValidUser.email ||
+      !newValidUser.password
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (isInvalid()) {
+      return;
+    }
+
     console.log(user);
+    onOpenChange(false);
   };
 
   return (
@@ -37,20 +67,38 @@ export default function Signup({ isOpen, onOpenChange }) {
       <Modal
         backdrop="blur"
         isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        placement="top-center"
+        onOpenChange={(value) => {
+          if (!value) {
+            setUser({
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+            });
+
+            setIsValid({
+              firstName: true,
+              lastName: true,
+              email: true,
+              password: true,
+            });
+          }
+
+          onOpenChange(value);
+        }}
+        placement="center"
       >
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Sign up</ModalHeader>
               <ModalBody>
-                <input
+                {/* <input
                   type="date"
                   onChange={handleChange}
-                  name="date"
+                  name="birthDate"
                   value={user.birthDate}
-                />
+                /> */}
                 <Input
                   autoFocus
                   label="First Name"
@@ -59,18 +107,22 @@ export default function Signup({ isOpen, onOpenChange }) {
                   onChange={handleChange}
                   name="firstName"
                   value={user.firstName}
+                  isInvalid={!isValid.firstName}
+                  errorMessage={
+                    isValid.firstName ? "" : "First Name is required"
+                  }
                 />
                 <Input
-                  autoFocus
                   label="Last Name"
                   placeholder="Enter your last name"
                   variant="bordered"
                   onChange={handleChange}
                   name="lastName"
                   value={user.lastName}
+                  isInvalid={!isValid.lastName}
+                  errorMessage={isValid.lastName ? "" : "Last Name is required"}
                 />
                 <Input
-                  autoFocus
                   endContent={
                     <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                   }
@@ -80,6 +132,8 @@ export default function Signup({ isOpen, onOpenChange }) {
                   onChange={handleChange}
                   name="email"
                   value={user.email}
+                  isInvalid={!isValid.email}
+                  errorMessage={isValid.email ? "" : "Email is required"}
                 />
                 <Input
                   endContent={
@@ -92,6 +146,8 @@ export default function Signup({ isOpen, onOpenChange }) {
                   onChange={handleChange}
                   name="password"
                   value={user.password}
+                  isInvalid={!isValid.password}
+                  errorMessage={isValid.password ? "" : "Password is required"}
                 />
                 <div className="flex py-2 px-1 justify-between">
                   <Checkbox
@@ -113,9 +169,9 @@ export default function Signup({ isOpen, onOpenChange }) {
                 <Button
                   color="primary"
                   onClick={handleSubmit}
-                  onPress={onClose}
+                  onPress={() => !isInvalid() && onClose()}
                 >
-                  Sign in
+                  Sign up
                 </Button>
               </ModalFooter>
             </>

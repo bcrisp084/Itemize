@@ -19,6 +19,10 @@ export default function Login({ isOpen, onOpenChange }) {
     email: "",
     password: "",
   });
+  const [isValid, setIsValid] = useState({
+    email: true,
+    password: true,
+  });
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -26,7 +30,25 @@ export default function Login({ isOpen, onOpenChange }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate inputs
+    const newIsValid = {
+      email: user.email !== "",
+      password: user.password !== "",
+    };
+
+    setIsValid(newIsValid);
+
+    // Check if any validation fails
+    if (!newIsValid.email || !newIsValid.password) {
+      return;
+    }
+
+    // Validation passed, proceed with submission
     console.log(user);
+
+    // Close the modal
+    onOpenChange(false);
   };
 
   return (
@@ -34,8 +56,13 @@ export default function Login({ isOpen, onOpenChange }) {
       <Modal
         backdrop="blur"
         isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        placement="top-center"
+        onOpenChange={() => {
+          if (isOpen) {
+            setIsValid({ email: true, password: true });
+          }
+          onOpenChange(!isOpen);
+        }}
+        placement="center"
       >
         <ModalContent>
           {(onClose) => (
@@ -50,6 +77,8 @@ export default function Login({ isOpen, onOpenChange }) {
                   label="Email"
                   placeholder="Enter your email"
                   variant="bordered"
+                  isInvalid={!isValid.email}
+                  errorMessage={isValid.email ? "" : "Email is required"}
                   onChange={handleChange}
                   name="email"
                   value={user.email}
@@ -62,6 +91,8 @@ export default function Login({ isOpen, onOpenChange }) {
                   placeholder="Enter your password"
                   type="password"
                   variant="bordered"
+                  isInvalid={!isValid.password}
+                  errorMessage={isValid.password ? "" : "Password is required"}
                   onChange={handleChange}
                   name="password"
                   value={user.password}
@@ -83,11 +114,7 @@ export default function Login({ isOpen, onOpenChange }) {
                 <Button color="danger" variant="flat" onPress={onClose}>
                   Close
                 </Button>
-                <Button
-                  color="primary"
-                  onClick={handleSubmit}
-                  onPress={onClose}
-                >
+                <Button color="primary" onClick={handleSubmit}>
                   Sign in
                 </Button>
               </ModalFooter>
