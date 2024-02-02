@@ -101,10 +101,10 @@ body {
 }
 
 .todo-div:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 0 5px white;
   transition: 0.3s;
-  border-right: solid 1px white;
+  border-right: solid 1px rgb(176, 176, 176);
 }
 
 .todo-statement {
@@ -128,4 +128,76 @@ body {
   background-clip: text;
   color: transparent;
   background-image: linear-gradient(to right, #3b82f6, rgb(120, 11, 245));
+}
+
+#feature-grid {
+  border-left: dashed 1px #3b82f6;
+}
+#integration-grid {
+  border-left: dashed 1px #3b82f6;
+}
+
+#customer-grid {
+  border-right: dashed 1px #3b82f6;
+}
+
+.chat-div {
+  background: linear-gradient(to right, rgba(26, 42, 62, 0.472), #000000f7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px
+    linear-gradient(to right, rgba(26, 42, 62, 0.249), #000000f7);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  rotate: -4deg;
+  transition: 0.3s;
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+#chat-image {
+  max-height: 100%;
+  max-width: 100%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  opacity: 0.8;
+  filter: grayscale(30%);
+}
+
+.chat-div:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 1px #e76f51;
+  transition: 0.3s;
+}
+
+.chat-statement {
+  font-size: 4rem;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.chat-decleration {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.team {
+  font-weight: bold;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #2a9d8f, #e76f51);
 }
