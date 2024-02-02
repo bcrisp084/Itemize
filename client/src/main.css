@@ -10,7 +10,122 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  /* background-color: #1f1f1f; */
+  overflow: hidden;
+}
+
+.wrapper {
+  overflow-y: scroll;
   height: 100vh;
+  /* overflow-y: auto; Enable vertical scrolling */
+  overflow-x: hidden;
   background: linear-gradient(to right, rgb(26, 42, 62), #000000f7);
+}
+
+#back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: #f9f9f9;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #201d1daf;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6e6d72;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4b4a4a;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.todo-div {
+  background: linear-gradient(to right, rgba(26, 42, 62, 0.472), #000000f7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px
+    linear-gradient(to right, rgba(26, 42, 62, 0.249), #000000f7);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  rotate: 4deg;
+  transition: 0.3s;
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  border-right: solid 3px #3b82f6;
+}
+
+#todo-image {
+  max-height: 100%;
+  max-width: 100%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  opacity: 0.8;
+  filter: grayscale(30%);
+}
+
+.todo-div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px white;
+  transition: 0.3s;
+  border-right: solid 1px white;
+}
+
+.todo-statement {
+  font-size: 4rem;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.decleration {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.things {
+  font-weight: bold;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #3b82f6, rgb(120, 11, 245));
 }

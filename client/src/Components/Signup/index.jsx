@@ -58,8 +58,7 @@ export default function Signup({ isOpen, onOpenChange }) {
       return;
     }
 
-    console.log(user);
-    onOpenChange(false);
+    onOpenChange();
   };
 
   return (
@@ -93,12 +92,6 @@ export default function Signup({ isOpen, onOpenChange }) {
             <>
               <ModalHeader className="flex flex-col gap-1">Sign up</ModalHeader>
               <ModalBody>
-                {/* <input
-                  type="date"
-                  onChange={handleChange}
-                  name="birthDate"
-                  value={user.birthDate}
-                /> */}
                 <Input
                   autoFocus
                   label="First Name"

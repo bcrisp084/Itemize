@@ -31,7 +31,6 @@ export default function Login({ isOpen, onOpenChange }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate inputs
     const newIsValid = {
       email: user.email !== "",
       password: user.password !== "",
@@ -39,16 +38,10 @@ export default function Login({ isOpen, onOpenChange }) {
 
     setIsValid(newIsValid);
 
-    // Check if any validation fails
     if (!newIsValid.email || !newIsValid.password) {
       return;
     }
-
-    // Validation passed, proceed with submission
-    console.log(user);
-
-    // Close the modal
-    onOpenChange(false);
+    onOpenChange();
   };
 
   return (

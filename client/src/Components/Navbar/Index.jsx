@@ -14,7 +14,7 @@ import {
   Button,
 } from "@nextui-org/react";
 
-export default function App() {
+export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Features");
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -61,7 +61,7 @@ export default function App() {
         <NavbarContent className="sm:hidden pr-3 text-white" justify="center">
           <NavbarBrand>
             <Logo />
-            <p className="font-bold text-inherit text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500  to-orange-500">
+            <p className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500  to-orange-500">
               Itemize
             </p>
           </NavbarBrand>
@@ -73,7 +73,7 @@ export default function App() {
         >
           <NavbarBrand>
             <Logo />
-            <p className="font-bold text-inherit text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500  to-orange-700">
+            <p className="font-bold text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500  to-orange-700">
               Itemize
             </p>
           </NavbarBrand>
@@ -88,7 +88,7 @@ export default function App() {
               <Link
                 onClick={() => handleClick(item)}
                 color="foreground"
-                href="#"
+                href={`#${item}`}
                 size="lg"
                 className={`${
                   activeLink === item
@@ -133,7 +133,7 @@ export default function App() {
                     ? "danger"
                     : "foreground"
                 }
-                href="#"
+                href={`#${item}`}
                 size="lg"
               >
                 {item}
