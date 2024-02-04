@@ -84,7 +84,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
-  border-right: solid 3px #3b82f6;
+  border-right: solid 1px #3b82f6;
 }
 
 #todo-image {
@@ -138,7 +138,8 @@ body {
 }
 
 #customer-grid {
-  border-right: dashed 1px #3b82f6;
+  border-right: dashed 1px #2a9d8f;
+  margin-right: 75px;
 }
 
 .chat-div {
@@ -158,6 +159,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
+  border-left: solid 1px #2a9d8f;
 }
 
 #chat-image {
@@ -175,8 +177,9 @@ body {
 
 .chat-div:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 1px #e76f51;
-  transition: 0.3s;
+  box-shadow: 0 0 2px #e76f51;
+  transition: 0.1s;
+  border-left: solid 1px #e76f51;
 }
 
 .chat-statement {

@@ -2,7 +2,7 @@
   "name": "itemize",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/bcrisp084/Itemize#readme",
   "dependencies": {
+    "apollo-server": "^3.13.0",
     "concurrently": "^8.2.1"
   }
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "Brian",
+    "lastName": "Crisp",
+    "email": "bcrisp084@yahoo.com",
+    "password": "brye1234"
+  },
+  {
+    "firstName": "Jessica",
+    "lastName": "Crisp",
+    "email": "jessicaAthey@verizon.net",
+    "password": "jDate1234"
+  },
+  {
+    "firstName": "Lillian",
+    "lastName": "Crisp",
+    "email": "lillyBug@yahoo.com",
+    "password": "meer1234"
+  },
+  {
+    "firstName": "Adam",
+    "lastName": "Crisp",
+    "email": "aDaniel@yahoo.com",
+    "password": "ladyKiller"
+  },
+  {
+    "firstName": "Lydia",
+    "lastName": "Crisp",
+    "email": "lydiaRaeyahoo.com",
+    "password": "lydia1234"
+  }
+]

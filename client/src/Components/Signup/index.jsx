@@ -13,14 +13,19 @@ import {
 import MailIcon from "../MailIcon";
 import LockIcon from "../LockIcon";
 import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../utils/mutations";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup({ isOpen, onOpenChange }) {
+  const [addUser] = useMutation(ADD_USER);
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const [isValid, setIsValid] = useState({
     firstName: true,
@@ -30,7 +35,10 @@ export default function Signup({ isOpen, onOpenChange }) {
   });
 
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const isInvalid = () => {
@@ -53,6 +61,39 @@ export default function Signup({ isOpen, onOpenChange }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    try {
+      addUser({
+        variables: {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          password: user.password,
+        },
+      });
+
+      navigate("/hub");
+
+      setUser({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      });
+
+      setIsValid({
+        firstName: true,
+        lastName: true,
+        email: true,
+        password: true,
+      });
+
+      console.log("User added successfully");
+
+      return;
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
 
     if (isInvalid()) {
       return;

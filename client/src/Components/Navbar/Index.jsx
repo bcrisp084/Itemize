@@ -14,11 +14,15 @@ import {
   Button,
 } from "@nextui-org/react";
 
+import { useLocation } from "react-router";
+
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Features");
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
+
+  const location = useLocation();
 
   const handleClick = (item) => {
     setActiveLink(item);
@@ -103,22 +107,30 @@ export default function NavBar() {
         </NavbarContent>
 
         <NavbarContent justify="end">
-          <NavbarItem className="lg:flex">
-            <Link href="#" onClick={handleOpenLogin}>
-              Login
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Button
-              onClick={handleOpenSignup}
-              as={Link}
-              color="primary"
-              href="#"
-              variant="flat"
-            >
-              Sign Up
-            </Button>
-          </NavbarItem>
+          {location.pathname === "/hub" ? (
+            <NavbarItem className="lg:flex">
+              <Link href="/">Logout</Link>
+            </NavbarItem>
+          ) : (
+            <>
+              <NavbarItem className="lg:flex">
+                <Link href="#" onClick={handleOpenLogin}>
+                  Login
+                </Link>
+              </NavbarItem>
+              <NavbarItem>
+                <Button
+                  onClick={handleOpenSignup}
+                  as={Link}
+                  color="primary"
+                  href="#"
+                  variant="flat"
+                >
+                  Sign Up
+                </Button>
+              </NavbarItem>
+            </>
+          )}
         </NavbarContent>
 
         <NavbarMenu>
