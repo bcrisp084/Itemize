@@ -1,23 +1,14 @@
 // import { Container, Box, Grid } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import todoImage from "../Assets/todo.jpg";
 import chatImage from "../Assets/chat.jpg";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import timeImage from "../Assets/time.jpg";
 
 const Home = () => {
   return (
     <>
-      <Box id={"Features"} className="features" sx={{ flexGrow: 1 }}>
+      <Box id="Features" className="features" sx={{ flexGrow: 1 }}>
         <Grid
           container
           id="feature-grid"
@@ -49,7 +40,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box id={"Customers"} sx={{ flexGrow: 1 }}>
+      <Box id="Customers" sx={{ flexGrow: 1 }}>
         <Grid
           id="customer-grid"
           container
@@ -81,7 +72,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box id={"Integrations"} sx={{ flexGrow: 1 }}>
+      <Box id="Integrations" sx={{ flexGrow: 1 }}>
         <Grid
           id="integration-grid"
           container
@@ -92,10 +83,23 @@ const Home = () => {
           columnSpacing={{ md: 3 }}
         >
           <Grid xs={9} md={5} xl={4}>
-            <Item>xs=8</Item>
+            <div className="time-statement">
+              <h2>
+                Spend the <span className="time">time</span> you have working
+                smarter.
+              </h2>
+            </div>
+            <div>
+              <p className="time-decleration">
+                Streamline your workflow by utilizing the tools provided to you.
+                Make your life more efficient.
+              </p>
+            </div>
           </Grid>
           <Grid xs={9} md={5} xl={4}>
-            <Item>xs=8</Item>
+            <div id="time-div">
+              <img id="time-image" src={timeImage} />
+            </div>
           </Grid>
         </Grid>
       </Box>

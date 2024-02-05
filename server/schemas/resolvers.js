@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -20,7 +21,28 @@ const resolvers = {
       { firstName, lastName, email, password },
       context
     ) => {
-      return await User.create({ firstName, lastName, email, password });
+      const user = await User.create({ firstName, lastName, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      try {
+        const user = await User.findOne({ email });
+        if (!user) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+
+        const correctPw = await user.isCorrectPassword(password);
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+
+        const token = signToken(user);
+        return { token, user };
+      } catch (error) {
+        console.error("Error during login:", error.message);
+        throw new AuthenticationError("An error occurred during login");
+      }
     },
   },
 };

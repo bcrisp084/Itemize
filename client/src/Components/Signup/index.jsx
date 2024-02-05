@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import { useNavigate } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 export default function Signup({ isOpen, onOpenChange }) {
   const [addUser] = useMutation(ADD_USER);
@@ -59,11 +60,11 @@ export default function Signup({ isOpen, onOpenChange }) {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      addUser({
+      const signupResponse = await addUser({
         variables: {
           firstName: user.firstName,
           lastName: user.lastName,
@@ -72,7 +73,12 @@ export default function Signup({ isOpen, onOpenChange }) {
         },
       });
 
-      navigate("/hub");
+      console.log(signupResponse);
+
+      const token = signupResponse.data.addUser.token;
+      Auth.login(token);
+
+      navigate("/");
 
       setUser({
         firstName: "",

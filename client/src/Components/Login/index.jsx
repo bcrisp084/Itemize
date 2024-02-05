@@ -13,6 +13,9 @@ import {
 import MailIcon from "../MailIcon";
 import LockIcon from "../LockIcon";
 import { useState } from "react";
+import Auth from "../../utils/auth";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../../utils/mutations";
 
 export default function Login({ isOpen, onOpenChange }) {
   const [user, setUser] = useState({
@@ -24,12 +27,24 @@ export default function Login({ isOpen, onOpenChange }) {
     password: true,
   });
 
+  const [login, { error }] = useMutation(LOGIN);
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const loginResponse = await login({
+      variables: {
+        email: user.email,
+        password: user.password,
+      },
+    });
+
+    const token = loginResponse.data.login.token;
+    Auth.login(token);
 
     const newIsValid = {
       email: user.email !== "",

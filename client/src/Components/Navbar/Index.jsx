@@ -13,6 +13,7 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
+import Auth from "../../utils/auth";
 
 import { useLocation } from "react-router";
 
@@ -109,7 +110,9 @@ export default function NavBar() {
         <NavbarContent justify="end">
           {location.pathname === "/hub" ? (
             <NavbarItem className="lg:flex">
-              <Link href="/">Logout</Link>
+              <Link href="/" onClick={() => Auth.logout()}>
+                Logout
+              </Link>
             </NavbarItem>
           ) : (
             <>
